@@ -16,31 +16,31 @@ export default function FixedPrice() {
                         <form action="">
                             <div className="form-row row mb-4">
                                 <div className="col-md-6">
-                                    <label htmlFor="text" className="form-label">First name</label>
+                                    <label htmlFor="text" className="form-label fw-medium font-outline">First name</label>
                                     <input type="text" className="form-control" id="name" name="First name"  required />
                                 </div>
                                 <div className="col-md-6">
-                                    <label htmlFor="lastname" className="form-label">Last name</label>
+                                    <label htmlFor="lastname" className="form-label fw-medium font-outline">Last name</label>
                                     <input type="text" className="form-control" id="name" name="lastname"  required />
                                 </div>
                             </div>
                             <div className="form-row row mb-4">
                                 <div className="col-md-6">
-                                    <label htmlFor="number" className="form-label">Phone Number</label>
+                                    <label htmlFor="number" className="form-label fw-medium font-outline">Phone Number</label>
                                     <input type="number" className="form-control" id="name" name="number" required />
                                 </div>
                                 <div className="col-md-6">
-                                    <label htmlFor="email" className="form-label">Email</label>
+                                    <label htmlFor="email" className="form-label fw-medium font-outline">Email</label>
                                     <input type="email" className="form-control" id="email" name="email"  required />
                                 </div>
                             </div>
                             <div className="form-row row mb-4">
                                 <div className="col-md-8">
-                                    <label htmlFor="Title" className="form-label">Project Title</label>
+                                    <label htmlFor="Title" className="form-label fw-medium font-outline">Project Title</label>
                                     <input type="text" className="form-control" id="title" name="Title"  required />
                                 </div>
                                 <div className="col-md-4">
-                                    <label htmlFor="timeline" className="form-label">Project Timeline</label>
+                                    <label htmlFor="timeline" className="form-label fw-medium font-outline">Project Timeline</label>
                                    <select name="" className='form-control' id="selecthours">
                                     <option value="Select Hours">Select Hours</option>
                                     <option value="2 hours">2 hours</option>
@@ -51,7 +51,7 @@ export default function FixedPrice() {
                             </div>
                             <div className="form-row row mb-4">
                                 <div className="col-12">
-                                    <label htmlFor="Title" className="form-label">Project Description</label>
+                                    <label htmlFor="Title" className="form-label fw-medium font-outline">Project Description</label>
                                     <textarea name="message" id="message" placeholder='Select Message' className='w-100 form-control'></textarea>
                                 </div>
                             </div>

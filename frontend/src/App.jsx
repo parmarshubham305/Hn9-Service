@@ -7,6 +7,10 @@ import Header from './components/Header';
 import Banner from './components/Banner';
 import About from './components/About';
 import FixedPrice from './components/FixedPrice';
+import OurBrands from './components/OurBrands';
+import Testimonials from './components/Testimonials';
+import Hn9Way from './components/Hn9Way';
+import Footer from './components/Footer';
 import Success from './pages/Success';
 import Cancel from './pages/Cancel';
 import Register from './pages/Register';
@@ -83,6 +87,10 @@ export default function App(){
             </div>
             <About/>
             <FixedPrice/>
+            <OurBrands/>
+            <Testimonials />
+            <Hn9Way />
+            <Footer/>
           </main>
         } />
         <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />

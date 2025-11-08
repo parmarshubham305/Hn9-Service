@@ -24,4 +24,6 @@ export const api = {
   createService: (serviceData) => axios.post(`${API_BASE_URL}?resource=services`, serviceData),
   updateService: (id, serviceData) => axios.put(`${API_BASE_URL}?resource=services&id=${id}`, serviceData),
   deleteService: (id) => axios.delete(`${API_BASE_URL}?resource=services&id=${id}`),
+
+  getTestimonials: () => axios.get(`${API_BASE_URL}?resource=testimonials`),
 };

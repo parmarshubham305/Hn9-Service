@@ -37,6 +37,7 @@ export default function Header({ onLoginClick }) {
             <img src='/src/images/hn9-codecraft.svg' alt='Hn9 Codecraft'/>
           </div>
           <div>
+            <a href="#" className='text-black mx-4'>How to Work</a>
             {isLoggedIn ? (
               <div className="d-flex align-items-center">
                 <button
