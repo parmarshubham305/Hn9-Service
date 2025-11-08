@@ -6,6 +6,7 @@ import ServiceCard from './components/ServiceCard';
 import Header from './components/Header';
 import Banner from './components/Banner';
 import About from './components/About';
+import FixedPrice from './components/FixedPrice';
 import Success from './pages/Success';
 import Cancel from './pages/Cancel';
 import Register from './pages/Register';
@@ -81,6 +82,7 @@ export default function App(){
               </div>
             </div>
             <About/>
+            <FixedPrice/>
           </main>
         } />
         <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />

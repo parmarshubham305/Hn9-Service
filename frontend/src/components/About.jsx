@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AboutImage from '../images/about-img.png';
-
 export default function About() {
     return (
     <div className="section-spacing">
         <div className="container">
             <div className="row align-items-center justify-content-between">
-                <div className="col-md-6 text-md-end">
+                <div className="col-md-6">
                     <img src={AboutImage} alt="banner image" />
                 </div>
                 <div className="col-md-6">

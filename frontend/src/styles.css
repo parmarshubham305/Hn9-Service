@@ -11909,23 +11909,23 @@ main {
   flex-grow: 1;
 }
 
-input, select,
+input,
 .btn, button {
   border-radius: 50px;
   -moz-border-radius: 50px;
   -webkit-border-radius: 50px;
 }
-input:focus, select:focus,
+input:focus,
 .btn:focus, button:focus {
   box-shadow: none !important;
   outline: none !important;
 }
-input:focus:not(:focus-visible), select:focus:not(:focus-visible),
+input:focus:not(:focus-visible),
 .btn:focus:not(:focus-visible), button:focus:not(:focus-visible) {
   box-shadow: none !important;
   outline: none !important;
 }
-input:not(.collapsed), select:not(.collapsed),
+input:not(.collapsed),
 .btn:not(.collapsed), button:not(.collapsed) {
   box-shadow: none !important;
   outline: none !important;

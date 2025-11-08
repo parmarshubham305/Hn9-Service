@@ -35,7 +35,7 @@ body {
 main{
     flex-grow: 1;
 }
-input,select,
+input,
 .btn,button {@include radius(50px);
     &:focus {
         box-shadow: none !important;
