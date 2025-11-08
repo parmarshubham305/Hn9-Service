@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import usersData from '../data/users';
+import { api } from '../api';
 
 export default function Login({ onClose, onSwitchToRegister }) {
   const [formData, setFormData] = useState({
@@ -11,23 +11,21 @@ export default function Login({ onClose, onSwitchToRegister }) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Check against existing users
-    const existingUser = usersData.find(u => u.email === formData.email && u.password === formData.password);
-    // Also check registered user in localStorage
-    const registeredUser = JSON.parse(localStorage.getItem('user'));
-    const isRegisteredValid = registeredUser && registeredUser.email === formData.email && registeredUser.password === formData.password;
+    try {
+      const response = await api.login(formData.email, formData.password);
+      const { token, user } = response.data;
 
-    if (existingUser || isRegisteredValid) {
-      const userToLogin = existingUser || registeredUser;
-      localStorage.setItem('user', JSON.stringify(userToLogin));
+      localStorage.setItem('token', token);
+      localStorage.setItem('user', JSON.stringify(user));
       localStorage.setItem('isLoggedIn', 'true');
       onClose();
       // Reload page to update header/login state
       window.location.reload();
-    } else {
-      alert('Invalid credentials');
+    } catch (error) {
+      console.error('Error logging in:', error);
+      alert('Invalid credentials or server error. Please try again.');
     }
   };
 

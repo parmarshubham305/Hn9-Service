@@ -34,7 +34,7 @@ export default function Header({ onLoginClick }) {
       <div className="container">
         <div className="d-flex justify-content-between align-items-center">
           <div className="logo">
-            <h1 className="h4 mb-0 text-primary fw-bold">Hn9 Codecraft</h1>
+            <img src='/src/images/hn9-codecraft.svg' alt='Hn9 Codecraft'/>
           </div>
           <div>
             {isLoggedIn ? (
@@ -55,7 +55,7 @@ export default function Header({ onLoginClick }) {
               </div>
             ) : (
               <button
-                className="btn btn-outline-primary"
+                className="btn btn-secondary"
                 onClick={onLoginClick}
               >
                 Login

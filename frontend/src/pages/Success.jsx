@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { api } from '../api';
 
 export default function Success() {
   useEffect(() => {
@@ -29,16 +30,13 @@ export default function Success() {
         user.purchasedPlans = [...(user.purchasedPlans || []), ...purchasedPlans];
         user.totalHours = (user.totalHours || 0) + cart.reduce((sum, item) => sum + item.hours, 0);
 
-        // Update user in localStorage
-        localStorage.setItem('user', JSON.stringify(user));
-
-        // Update usersData array
-        const usersData = JSON.parse(localStorage.getItem('usersData') || '[]');
-        const userIndex = usersData.findIndex(u => u.id === user.id);
-        if (userIndex !== -1) {
-          usersData[userIndex] = user;
-          localStorage.setItem('usersData', JSON.stringify(usersData));
-        }
+        // Update user via API
+        api.updateUser(user.id, user).then(() => {
+          // Update user in localStorage
+          localStorage.setItem('user', JSON.stringify(user));
+        }).catch(error => {
+          console.error('Error updating user:', error);
+        });
 
         // Clear session cart
         sessionStorage.removeItem('checkoutCart');

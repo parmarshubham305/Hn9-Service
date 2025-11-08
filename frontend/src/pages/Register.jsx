@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import plansData from '../data/plans';
+import { api } from '../api';
 
 export default function Register({ onClose, onSwitchToLogin }) {
   const [formData, setFormData] = useState({
@@ -16,35 +16,39 @@ export default function Register({ onClose, onSwitchToLogin }) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (formData.password !== formData.confirmPassword) {
       alert('Passwords do not match');
       return;
     }
 
-    // Save to users.json file (simulated with localStorage for now)
-    const newUser = {
-      id: Date.now(),
-      email: formData.email,
-      password: formData.password,
-      phone: formData.phone,
-      country: formData.country,
-      totalHours: 0,
-      spentHours: 0,
-      purchasedPlans: []
-    };
+    try {
+      // Create user via API
+      const newUser = {
+        firstname: formData.firstname,
+        lastname: formData.lastname,
+        email: formData.email,
+        password: formData.password,
+        phone: formData.phone,
+        country: formData.country,
+        totalHours: 0,
+        spentHours: 0,
+        purchasedPlans: []
+      };
 
-    // Get existing users and add new user
-    const existingUsers = JSON.parse(localStorage.getItem('usersData')) || [];
-    const updatedUsers = [...existingUsers, newUser];
-    localStorage.setItem('usersData', JSON.stringify(updatedUsers));
+      const response = await api.createUser(newUser);
+      const createdUser = response.data;
 
-    // Also set current user
-    localStorage.setItem('user', JSON.stringify(newUser));
+      // Set current user in localStorage
+      localStorage.setItem('user', JSON.stringify(createdUser));
 
-    onClose();
-    onSwitchToLogin();
+      onClose();
+      onSwitchToLogin();
+    } catch (error) {
+      console.error('Error registering user:', error);
+      alert('Failed to register user. Please try again.');
+    }
   };
 
   return (

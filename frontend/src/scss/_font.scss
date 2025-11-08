@@ -15,15 +15,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-Chat:before {
-  content: "\e900";
+.font-outline{
+  font-family: 'Outfit', sans-serif;
 }
-.icon-cart:before {
-  content: "\e901";
-}
-.icon-user:before {
-  content: "\e902";
-}
-.icon-Search:before {
-  content: "\e903";
+.font-opensans{
+  font-family: 'Open Sans', sans-serif;
 }

@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import servicesData from './data/services';
+import { api } from './api';
 import Cart from './components/Cart';
 import ServiceCard from './components/ServiceCard';
 import Header from './components/Header';
+import Banner from './components/Banner';
+import About from './components/About';
 import Success from './pages/Success';
 import Cancel from './pages/Cancel';
 import Register from './pages/Register';
@@ -17,8 +19,24 @@ function ProtectedRoute({ children }) {
 
 export default function App(){
   const [cart, setCart] = useState([]);
+  const [servicesData, setServicesData] = useState([]);
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
+
+  useEffect(() => {
+    // Fetch services from API
+    const fetchServices = async () => {
+      try {
+        const response = await api.getServices();
+        setServicesData(response.data);
+      } catch (error) {
+        console.error('Error fetching services:', error);
+        // Fallback to static data if API fails
+        // import('./data/services').then(module => setServicesData(module.default));
+      }
+    };
+    fetchServices();
+  }, []);
 
   function addToCart(item){ setCart(prev=>[...prev,item]); }
 
@@ -46,18 +64,24 @@ export default function App(){
       <Header onLoginClick={handleLoginClick} />
       <Routes>
         <Route path="/" element={
-          <div className='min-vh-100 p-3 p-md-5'>
-            <div className="container">
-            <div className="heading mb-md-5 mb-4">
-              <h1 className="text-primary text-center fw-bold">Looking to Hire Skilled Developers?</h1>
-              <p className="text-center">At Hn9 Codecraft, we bring your ideas to life with expert web and app development services. Our dedicated team of skilled developers builds high-performance websites and mobile apps with quality, speed, and innovation.</p>
+          <main>
+            <Banner/>
+            <div className="service-section section-spacing bg-lighter">
+              <div className="main-heading mb-5 pb-4">
+                <div className="container">
+                    <h2 className="h1 text-primary text-center fw-bold ">Looking to Hire Skilled Developers?</h2>
+                    <p className="text-center">At Hn9 Codecraft, we bring your ideas to life with expert web and app development services. Our dedicated team of skilled developers builds high-performance websites and mobile apps with quality, speed, and innovation.</p>
+                </div>
+              </div>
+              <div className="container">
+                <div className='row g-4 align-items-start'>
+                  <div className='col-md-8 col-12'>{servicesData.map(s=>(<ServiceCard key={s.id} service={s} onAdd={addToCart}/>))}</div>
+                  <div className='col-md-4 col-12 position-sticky top-0 '><Cart cart={cart} onLoginClick={handleLoginClick}/></div>
+                </div>
+              </div>
             </div>
-            <div className='row g-4 align-items-start'>
-              <div className='col-md-8 col-12'>{servicesData.map(s=>(<ServiceCard key={s.id} service={s} onAdd={addToCart}/>))}</div>
-              <div className='col-md-4 col-12 position-sticky top-0 '><Cart cart={cart} onLoginClick={handleLoginClick}/></div>
-            </div>
-            </div>
-          </div>
+            <About/>
+          </main>
         } />
         <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
         <Route path="/success" element={<Success />} />

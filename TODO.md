@@ -1,15 +1,6 @@
-# TODO: Additional Features Implementation
+# Fix Login Functionality
 
-## New Tasks
-- [x] Remove Purchased Services from Register modal, add country dropdown
-- [x] Save registered users to users.json file
-- [x] Update Cart: Remove email input, show login prompt on checkout click
-- [x] Update Header: Show user icon instead of login button when logged in
-- [x] Add Coupon module with 10% discount calculation
-- [x] Update Cart display: Subtotal, Discount, Tax, Total
-- [x] Save purchased services to user's JSON data after successful payment
-- [x] Add description array and extraDetails to plans data
-- [x] Update ServiceCard to show description list and Read More modal
-- [x] Update purchased plans to include serviceName, price, hours, date, and day
-- [x] Fix Dashboard purchased services display with proper table format
-- [x] Test all new functionality
+## Tasks
+- [x] Update api.js to add SERVER_BASE_URL and api.login function for posting to local server /login endpoint
+- [x] Update Login.jsx to use api.login in handleSubmit, store JWT token and user in localStorage, set isLoggedIn, close modal, and reload page
+- [x] Test login functionality (server running on localhost:4242, frontend on localhost:5174)

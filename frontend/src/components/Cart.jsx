@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { loadStripe } from '@stripe/stripe-js';
 import { STRIPE_PUBLISHABLE_KEY, SERVER_CREATE_SESSION_URL } from '../config';
+import ApplePay from '../images/Apple_Pay_logo.svg';
+import Mastercard from '../images/Mastercard-logo.svg';
+import PayPal from '../images/PayPal.svg';
+import Visa from '../images/Visa_Inc_logo.svg';
 
 const stripePromise = loadStripe(STRIPE_PUBLISHABLE_KEY);
 
@@ -79,48 +83,52 @@ export default function Cart({cart, onLoginClick}){
   };
 
   return(<div className='card bg-white p-4 rounded-3 shadow position-sticky top-0 h-100'>
-    <h3 className='card-title fw-semibold mb-3'>Cart</h3>
+    <h3 className='card-title text-primary fw-semibold mb-4 pb-4 border-bottom border-light'>Order Summary</h3>
     {cart.length === 0 ? (
       <p className='text-muted'>No items in cart</p>
     ) : (
       <>
-        {cart.map((i,idx)=>(<div key={idx} className='mb-2'>{i.title} ({i.plan} - {i.hours}h) ${i.price.toFixed(2)}</div>))}
-        <hr />
-        <div className='mb-2'>
-          <strong>Subtotal:</strong> ${subtotal.toFixed(2)}
+        <div className=' mb-4 pb-4 border-bottom border-light d-flex flex-column gap-2'>
+          {cart.map((i,idx)=>(<div key={idx} className='d-flex justify-content-between align-items-center text-black fw-medium'><span>{i.title} <small className='text-muted'>({i.plan})</small> </span> 
+          <span>${i.price.toFixed(2)}</span></div>))}
         </div>
-        <div className='mb-2'>
-          <strong>Tax (10%):</strong> ${tax.toFixed(2)}
-        </div>
-        {discount > 0 && (
-          <div className='mb-2 text-success'>
-            <strong>Discount (10%):</strong> -${discountAmount.toFixed(2)}
-          </div>
-        )}
-        <div className='mb-3'>
-          <strong>Total:</strong> ${total.toFixed(2)}
-        </div>
-
-        {/* Coupon Section */}
-        <div className='mb-3'>
-          <label className='form-label fw-medium'>Coupon Code</label>
+          {/* Coupon Section */}
+        <div className=' mb-4 pb-4 border-bottom border-light'>
+          <label className='form-label text-primary fw-medium'>Enter Coupon Code</label>
           <div className='input-group'>
             <input
               type='text'
-              className='form-control'
+              className='form-control rounded-5 border-primary rounded-end-0'
               placeholder='Enter coupon code'
               value={couponCode}
               onChange={(e) => setCouponCode(e.target.value)}
             />
             <button
-              className='btn btn-outline-primary'
+              className='btn btn-primary px-4'
               type='button'
               onClick={applyCoupon}
             >
-              Apply
+              Submit
             </button>
           </div>
         </div>
+
+        <div className='d-flex justify-content-between align-items-center text-black fw-medium mb-2'>
+          <span>Subtotal:</span> ${subtotal.toFixed(2)}
+        </div>
+        <div className='d-flex justify-content-between align-items-center text-black fw-medium mb-2'>
+          <span>Tax </span> ${tax.toFixed(2)}
+        </div>
+        {discount > 0 && (
+          <div className='d-flex justify-content-between align-items-center text-black fw-medium mb-2 text-success'>
+            <span>Discount (10%):</span> -${discountAmount.toFixed(2)}
+          </div>
+        )}
+        <div className='mb-4 d-flex justify-content-between align-items-center text-black fw-bold fs-5 border-top pt-3 mt-2'>
+          <span>Total:</span>   <span>${total.toFixed(2)}</span>
+        </div>
+
+      
       </>
     )}
 
@@ -136,10 +144,18 @@ export default function Cart({cart, onLoginClick}){
 
     <button
       onClick={handleCheckout}
-      className='btn btn-info w-100'
+      className='btn btn-secondary w-100'
       disabled={cart.length === 0}
     >
       {isLoggedIn ? 'Checkout' : 'Login to Checkout'}
     </button>
+
+    <h4 className='mb-3 pt-4'>Payment Accept:</h4>
+    <div className='d-flex align-items-center justify-content-between'>
+      <img src={PayPal} alt="PayPal" />
+      <img src={Mastercard} alt="Mastercard" />
+      <img src={Visa} alt="Visa" />
+      <img src={ApplePay} alt="" />
+    </div>
   </div>);
 }

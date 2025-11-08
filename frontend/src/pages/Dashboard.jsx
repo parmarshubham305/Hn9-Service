@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import plansData from '../data/plans';
-import usersData from '../data/users';
+import { api } from '../api';
 
 export default function Dashboard() {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
-  const [plans, setPlans] = useState(plansData);
-  const [users, setUsers] = useState(usersData);
+  const [plans, setPlans] = useState([]);
+  const [users, setUsers] = useState([]);
   const [editingPlan, setEditingPlan] = useState(null);
   const [editingUser, setEditingUser] = useState(null);
   const [editingTask, setEditingTask] = useState(null);
@@ -24,23 +23,29 @@ export default function Dashboard() {
       const totalHours = storedUser.purchasedPlans?.reduce((sum, plan) => sum + (plan.hours || 0), 0) || 0;
       setUser({ ...storedUser, totalHours });
 
-      // Load dynamic data from localStorage
-      const storedUsers = localStorage.getItem('usersData');
-      if (storedUsers) {
-        setUsers(JSON.parse(storedUsers));
-      }
+      // Fetch data from API
+      fetchData();
+    }
+  }, [navigate]);
 
-      const storedPlans = localStorage.getItem('plansData');
-      if (storedPlans) {
-        setPlans(JSON.parse(storedPlans));
-      }
+  const fetchData = async () => {
+    try {
+      const [usersResponse, plansResponse] = await Promise.all([
+        api.getUsers(),
+        api.getPlans()
+      ]);
+      setUsers(usersResponse.data);
+      setPlans(plansResponse.data);
 
+      // Load tasks from localStorage (assuming tasks are local for now)
       const storedTasks = localStorage.getItem('tasksData');
       if (storedTasks) {
         setTasks(JSON.parse(storedTasks));
       }
+    } catch (error) {
+      console.error('Error fetching data:', error);
     }
-  }, [navigate]);
+  };
 
   const handleLogout = () => {
     localStorage.removeItem('isLoggedIn');
@@ -48,49 +53,61 @@ export default function Dashboard() {
   };
 
   // Plan CRUD
-  const addPlan = (plan) => {
-    const updatedPlans = [...plans, { ...plan, id: Date.now().toString() }];
-    setPlans(updatedPlans);
-    // Update localStorage
-    localStorage.setItem('plansData', JSON.stringify(updatedPlans));
+  const addPlan = async (plan) => {
+    try {
+      await api.createPlan(plan);
+      fetchData(); // Refresh data
+    } catch (error) {
+      console.error('Error adding plan:', error);
+    }
   };
 
-  const editPlan = (id, updatedPlan) => {
-    const updatedPlans = plans.map(p => p.id === id ? updatedPlan : p);
-    setPlans(updatedPlans);
-    setEditingPlan(null);
-    // Update localStorage
-    localStorage.setItem('plansData', JSON.stringify(updatedPlans));
+  const editPlan = async (id, updatedPlan) => {
+    try {
+      await api.updatePlan(id, updatedPlan);
+      setEditingPlan(null);
+      fetchData(); // Refresh data
+    } catch (error) {
+      console.error('Error editing plan:', error);
+    }
   };
 
-  const deletePlan = (id) => {
-    const updatedPlans = plans.filter(p => p.id !== id);
-    setPlans(updatedPlans);
-    // Update localStorage
-    localStorage.setItem('plansData', JSON.stringify(updatedPlans));
+  const deletePlan = async (id) => {
+    try {
+      await api.deletePlan(id);
+      fetchData(); // Refresh data
+    } catch (error) {
+      console.error('Error deleting plan:', error);
+    }
   };
 
   // User CRUD
-  const addUser = (newUser) => {
-    const updatedUsers = [...users, { ...newUser, id: Date.now() }];
-    setUsers(updatedUsers);
-    // Update localStorage
-    localStorage.setItem('usersData', JSON.stringify(updatedUsers));
+  const addUser = async (newUser) => {
+    try {
+      await api.createUser(newUser);
+      fetchData(); // Refresh data
+    } catch (error) {
+      console.error('Error adding user:', error);
+    }
   };
 
-  const editUser = (id, updatedUser) => {
-    const updatedUsers = users.map(u => u.id === id ? updatedUser : u);
-    setUsers(updatedUsers);
-    setEditingUser(null);
-    // Update localStorage
-    localStorage.setItem('usersData', JSON.stringify(updatedUsers));
+  const editUser = async (id, updatedUser) => {
+    try {
+      await api.updateUser(id, updatedUser);
+      setEditingUser(null);
+      fetchData(); // Refresh data
+    } catch (error) {
+      console.error('Error editing user:', error);
+    }
   };
 
-  const deleteUser = (id) => {
-    const updatedUsers = users.filter(u => u.id !== id);
-    setUsers(updatedUsers);
-    // Update localStorage
-    localStorage.setItem('usersData', JSON.stringify(updatedUsers));
+  const deleteUser = async (id) => {
+    try {
+      await api.deleteUser(id);
+      fetchData(); // Refresh data
+    } catch (error) {
+      console.error('Error deleting user:', error);
+    }
   };
 
   // Task CRUD
