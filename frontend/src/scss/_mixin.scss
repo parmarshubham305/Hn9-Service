@@ -1,0 +1,23 @@
+@use "sass:math";
+@use "sass:list";
+
+@function calculateRem($size) {
+    $remSize: '';
+
+    @if type-of($size)=='list' {
+        $size: list.nth($size, 1);
+        $remSize: #{math.div($size, 16px)}rem !important;
+    }
+
+    @else {
+        $remSize: #{math.div($size, 16px)}rem;
+    }
+
+    @return $remSize;
+}
+
+@mixin fontSize($size) {
+    font-size: $size; //Fallback in px
+    font-size: calculateRem($size);
+}
+

@@ -1,0 +1,146 @@
+export default [
+  {
+    id: 'shopify',
+    title: 'Shopify',
+    description: [
+      'Custom theme and plugin development for complete control.',
+      'Secure coding standards to ensure site safety and reliability.',
+      'Mobile-responsive design for optimal user experience.',
+      'Integration with payment gateways and third-party apps.',
+      'Performance optimization for faster loading times.'
+    ],
+    extraDetails: "Our Shopify development services go beyond basic store setup. We create custom themes that perfectly match your brand identity, implement advanced functionality through custom plugins, and ensure your store is optimized for conversions. With our expertise in Shopify's ecosystem, we can integrate complex features like abandoned cart recovery, advanced analytics, and multi-channel selling capabilities.",
+    prices1month: [
+      { hours: 2, price: 10 },
+      { hours: 4, price: 10 },
+      { hours: 6, price: 10 },
+      { hours: 8, price: 10 }
+    ],
+    prices3month: [
+      { hours: 2, price: 8 },
+      { hours: 4, price: 8 },
+      { hours: 6, price: 8 },
+      { hours: 8, price: 8 }
+    ]
+  },
+  {
+    id: 'wordpress',
+    title: 'WordPress',
+    description: [
+      'Custom theme and plugin development for complete control.',
+      'Secure coding standards to ensure site safety and reliability.',
+      'SEO optimization for better search engine rankings.',
+      'Mobile-responsive design for all devices.',
+      'Performance optimization and speed enhancements.'
+    ],
+    extraDetails: "WordPress is our specialty. We build custom themes from scratch or modify existing ones to create unique, brand-specific websites. Our development process includes security hardening, performance optimization, and integration with popular plugins. Whether you need a simple blog, complex e-commerce site, or a custom web application, we deliver scalable WordPress solutions that grow with your business.",
+    prices1month: [
+      { hours: 2, price: 10 },
+      { hours: 4, price: 10 },
+      { hours: 6, price: 10 },
+      { hours: 8, price: 10 }
+    ],
+    prices3month: [
+      { hours: 2, price: 8 },
+      { hours: 4, price: 8 },
+      { hours: 6, price: 8 },
+      { hours: 8, price: 8 }
+    ]
+  },
+  {
+    id: 'webflow',
+    title: 'Webflow',
+    description: [
+      'Visual development with no-code capabilities.',
+      'Custom interactions and animations.',
+      'CMS integration for dynamic content.',
+      'E-commerce functionality for online stores.',
+      'Advanced responsive design techniques.'
+    ],
+    extraDetails: "Webflow combines the best of visual design and development. Our team creates stunning, interactive websites using Webflow's powerful visual editor while implementing custom code for advanced functionality. We specialize in complex animations, custom interactions, and seamless integrations with external services. Whether you need a portfolio site, business website, or e-commerce platform, we deliver pixel-perfect results.",
+    prices1month: [
+      { hours: 2, price: 10 },
+      { hours: 4, price: 10 },
+      { hours: 6, price: 10 },
+      { hours: 8, price: 10 }
+    ],
+    prices3month: [
+      { hours: 2, price: 8 },
+      { hours: 4, price: 8 },
+      { hours: 6, price: 8 },
+      { hours: 8, price: 8 }
+    ]
+  },
+  {
+    id: 'uiux',
+    title: 'UI/UX',
+    description: [
+      'User research and analysis for informed design decisions.',
+      'Wireframing and prototyping for concept validation.',
+      'Visual design with modern UI principles.',
+      'Usability testing and user feedback integration.',
+      'Design system creation for consistency.'
+    ],
+    extraDetails: "Our UI/UX design process is comprehensive and user-centered. We start with thorough user research, create detailed user personas, and develop user journey maps. Our wireframes and prototypes are tested extensively before moving to high-fidelity designs. We create design systems that ensure consistency across all touchpoints and provide detailed design specifications for seamless development handoff.",
+    prices1month: [
+      { hours: 2, price: 10 },
+      { hours: 4, price: 10 },
+      { hours: 6, price: 10 },
+      { hours: 8, price: 10 }
+    ],
+    prices3month: [
+      { hours: 2, price: 8 },
+      { hours: 4, price: 8 },
+      { hours: 6, price: 8 },
+      { hours: 8, price: 8 }
+    ]
+  },
+  {
+    id: 'wix',
+    title: 'WIX',
+    description: [
+      'Drag-and-drop website building with custom code.',
+      'Advanced design customization options.',
+      'E-commerce and booking system integration.',
+      'Mobile optimization for all devices.',
+      'SEO tools and marketing integrations.'
+    ],
+    extraDetails: "While WIX provides an easy-to-use platform, we take it to the next level with custom development. We create unique designs that go beyond WIX's templates, implement custom functionality through Velo (WIX's coding platform), and integrate complex features like custom booking systems, advanced e-commerce workflows, and third-party service integrations.",
+    prices1month: [
+      { hours: 2, price: 10 },
+      { hours: 4, price: 10 },
+      { hours: 6, price: 10 },
+      { hours: 8, price: 10 }
+    ],
+    prices3month: [
+      { hours: 2, price: 8 },
+      { hours: 4, price: 8 },
+      { hours: 6, price: 8 },
+      { hours: 8, price: 8 }
+    ]
+  },
+  {
+    id: 'framer',
+    title: 'Framer',
+    description: [
+      'Interactive prototyping with advanced animations.',
+      'Component-based design system creation.',
+      'Code export for seamless development handoff.',
+      'Real device testing and optimization.',
+      'Integration with design tools and workflows.'
+    ],
+    extraDetails: "Framer is our tool of choice for creating high-fidelity, interactive prototypes that feel like real products. We build complex micro-interactions, advanced animations, and fully functional prototypes that accurately represent the final product. Our Framer prototypes include real data, working navigation, and can be tested on actual devices to provide the most accurate user feedback possible.",
+    prices1month: [
+      { hours: 2, price: 10 },
+      { hours: 4, price: 10 },
+      { hours: 6, price: 10 },
+      { hours: 8, price: 10 }
+    ],
+    prices3month: [
+      { hours: 2, price: 8 },
+      { hours: 4, price: 8 },
+      { hours: 6, price: 8 },
+      { hours: 8, price: 8 }
+    ]
+  }
+];

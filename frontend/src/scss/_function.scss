@@ -1,0 +1,167 @@
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+$custom-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "success": $success,
+  "info": $info,
+  "warning": $warning,
+  "danger": $danger,
+  "light": $light,
+  "dark": $dark,
+);
+
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+
+@mixin radius($radius) {
+  border-radius: $radius;
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+}
+
+/*************** background opacity and gradient *******************/
+
+
+@mixin linear-gradient($direction, $gradients...) {
+  background-color: nth($gradients, 1);
+  background: linear-gradient($direction, $gradients...);
+  background: -webkit-linear-gradient($direction, $gradients...);
+  background: -moz-linear-gradient($direction, $gradients...);
+  background: -ms-linear-gradient($direction, $gradients...);
+  background: -o-linear-gradient($direction, $gradients...);
+}
+
+/*************** Shadow *******************/
+@mixin box-shadow($top, $left, $blur, $spread, $color, $inset: false) {
+  @if $inset {
+    -webkit-box-shadow: inset $top $left $blur $spread $color;
+    -moz-box-shadow: inset $top $left $blur $spread $color;
+    box-shadow: inset $top $left $blur $spread $color;
+  }
+
+  @else {
+    -webkit-box-shadow: $top $left $blur $spread $color;
+    -moz-box-shadow: $top $left $blur $spread $color;
+    box-shadow: $top $left $blur $spread $color;
+  }
+}
+
+@mixin text-shadow($top, $left, $blur, $color, $inset: false) {
+  @if $inset {
+    -webkit-text-shadow: inset $top $left $blur $color;
+    -moz-text-shadow: inset $top $left $blur $color;
+    text-shadow: inset $top $left $blur $color;
+  }
+
+  @else {
+    -webkit-text-shadow: $top $left $blur $color;
+    -moz-text-shadow: $top $left $blur $color;
+    text-shadow: $top $left $blur $color;
+  }
+}
+
+/*************** Transform *******************/
+
+@mixin transform ($origin) {
+  -moz-transform: $origin;
+  -o-transform: $origin;
+  -ms-transform: $origin;
+  -webkit-transform: $origin;
+  transform: $origin;
+}
+
+@mixin perspective($val) {
+  -webkit-perspective: $val;
+  -moz-perspective: $val;
+  -ms-perspective: $val;
+  perspective: $val;
+}
+
+/*************** Transition *******************/
+@mixin transition($val) {
+  -webkit-transition: $val;
+  -moz-transition: $val;
+  -ms-transition: $val;
+  -o-transition: $val;
+  transition: $val;
+}
+
+/*************** Animation *******************/
+@mixin keyframes($animation-name) {
+  @-webkit-keyframes #{$animation-name} {
+    @content;
+  }
+
+  @-moz-keyframes #{$animation-name} {
+    @content;
+  }
+
+  @-ms-keyframes #{$animation-name} {
+    @content;
+  }
+
+  @-o-keyframes #{$animation-name} {
+    @content;
+  }
+
+  @keyframes #{$animation-name} {
+    @content;
+  }
+}
+
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+  -moz-animation: #{$str};
+  -ms-animation: #{$str};
+  -o-animation: #{$str};
+  animation: #{$str};
+}
+
+@mixin appearance($value) {
+  -webkit-appearance: $value;
+  -moz-appearance: $value;
+  appearance: $value;
+}
+
+/*************** Media Query *******************/
+$breakpoints: (
+  "phone": 400px,
+  "phone-wide": 480px,
+  "tablet-small": 640px,
+  "tablet": 768px,
+  "tablet-pro": 800px,
+  "tablet-large": 992px,
+  "tablet-wide": 1024px,
+  "desktop": 1240px,
+  "desktop-wide": 1440px,
+  "large-container": 1600px
+);
+
+@mixin mq($width, $type: min) {
+  @if map_has_key($breakpoints, $width) {
+    $width: map_get($breakpoints, $width);
+
+    @if $type ==max {
+      $width: $width - 1px;
+    }
+
+    @media only screen and (#{$type}-width: $width) {
+      @content;
+    }
+  }
+}
+
+@mixin mq-max($width, $type: max) {
+  @if map_has_key($breakpoints, $width) {
+    $width: map_get($breakpoints, $width);
+
+    @if $type ==min {
+      $width: $width - 1px;
+    }
+
+    @media only screen and (#{$type}-width: $width) {
+      @content;
+    }
+  }
+}

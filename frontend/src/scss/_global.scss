@@ -1,0 +1,188 @@
+@use "sass:math";
+@use "sass:list";
+
+@function calculateRem($size) {
+    $remSize: '';
+    @if type-of($size)=='list' {
+        $size: list.nth($size, 1);
+        $remSize: #{math.div($size, 16px)}rem !important;
+    }
+    @else {
+        $remSize: #{math.div($size, 16px)}rem;
+    }
+    @return $remSize;
+}
+
+@mixin fontSize($size) {
+    font-size: $size; //Fallback in px
+    font-size: calculateRem($size);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+body {
+    margin: 0;
+    padding: 0;
+    @include fontSize(18px);
+    font-family: 'poppins', 'sans-serif';
+    background-color: $light;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+main{
+    flex-grow: 1;
+}
+input,select,
+.btn,button {@include radius(50px);
+    &:focus {
+        box-shadow: none !important;
+        outline: none !important;
+        &:not(:focus-visible){
+            box-shadow: none !important;
+            outline: none !important;
+        }
+    }
+    &:not(.collapsed){
+        box-shadow: none !important;
+        outline: none !important;
+    }
+}
+
+a {
+    @include transition(0.4s all ease);
+    text-decoration: none;
+    outline: none;
+    display:inline-block;
+}
+
+.form-control ,.form-select{
+    font-family: 'poppins', sans-serif;
+}
+.form-check{
+    input,label{cursor: pointer;}
+}
+.form-control{border: unset;border-bottom:1px solid $border; border-radius: unset;font-family: 'Open Sans';
+    &::placeholder{color: $border;}
+    &:focus, &:active{
+        border-color:$primary !important;
+    }
+}
+.fw-700 {
+	font-weight: 700;
+}
+.badge {
+    font-weight: normal;
+}
+.accordion-expdate-input {
+	width: 28%;
+}
+.accordion-cvv-input {
+	width: 50%;
+}
+.w-20 {
+	width: 20%;
+}
+.w-19 {
+	width: 19%;
+}
+.payment_active {
+	color: $success;
+	background-color: transparent !important;
+}
+
+h1{@include fontSize(30px);font-family: 'poppins';color: $secondary;}
+h2{@include fontSize(24px);font-family: 'poppins';}
+p{@include fontSize(18px);font-family: 'Open Sans';}
+
+a {
+    @include transition(all 0.3s ease);
+    color:$secondary;
+    &:hover,
+    &:focus,
+    &:active {
+        color: $primary;
+    }
+}
+.spaceing_class{padding:4rem 0;}
+/***** Button ******/
+.btn {
+    @include transition(all 0.3s ease);
+    &:focus,
+    &.focus,
+    &:not(:disabled):not(.disabled):active,
+    &:not(:disabled):not(.disabled).active,
+    &:not(:disabled):not(.disabled):active:focus {
+        @include box-shadow(0, 0, 0, 0, #ffffff);
+    }
+}
+.btn-primary{
+    color:#ffffff;
+    background: $primary;
+    padding: 0.6rem 1.5rem;
+    &:hover,&:focus,&:active{
+        background: lighten($primary, 5%);
+        color: #ffffff;
+    }
+}
+.btn-outline-primary{
+    &:hover,&:focus,&:active{
+        background: $primary;
+        color: #ffffff;
+    }
+}
+// Spacing
+.spacing-y{
+  padding:2rem 0rem;
+  @include mq("tablet"){
+    padding:3.5rem 0rem;
+  }
+}
+
+// section header
+.section-header{
+    position: relative;
+    &:after{
+        content:"";
+        position: absolute;
+        width: 15%;
+        height:5px;
+        background:$primary;
+        bottom: 0;
+        left: 0;
+    }
+}
+
+
+@media (max-width: 600px) {
+	.w-20 {
+		width: 50%;
+	}
+	.w-19 {
+		width: 35%;
+		margin: 0;
+	}
+	.payment-section-card {
+		padding: 1rem 0;
+	}
+	.accordion-credit-items {
+		.accordion-header {
+			.accordion-button {
+				font-size: 18px;
+			}
+		}
+	}
+}
+@media (max-width: 991px) {
+	.payment-section-card {
+		.heding {
+			&::before {
+				transform: translate(-50%, -50%);
+				left: 50%;
+			}
+		}
+	}
+}
