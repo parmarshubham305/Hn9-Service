@@ -1,6 +1,6 @@
-# Fix Login Functionality
-
-## Tasks
-- [x] Update api.js to add SERVER_BASE_URL and api.login function for posting to local server /login endpoint
-- [x] Update Login.jsx to use api.login in handleSubmit, store JWT token and user in localStorage, set isLoggedIn, close modal, and reload page
-- [x] Test login functionality (server running on localhost:4242, frontend on localhost:5174)
+- [x] Fix server/users.json to proper array format with sequential ids
+- [x] Install Stripe PHP SDK in server folder using Composer
+- [x] Edit server/api.php to add checkout and webhook endpoints with Stripe integration
+- [x] Edit frontend/src/api.js to use PHP API for login and checkout
+- [ ] Test login with any user from users.json
+- [ ] Test checkout functionality
