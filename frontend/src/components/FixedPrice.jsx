@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import AboutImage from '../images/about-img.png';
 
 export default function FixedPrice() {
     return (

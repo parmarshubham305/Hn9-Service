@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import SiteImage from '../images/hn9-codecraft.svg';
 
 export default function Header({ onLoginClick }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -34,21 +35,26 @@ export default function Header({ onLoginClick }) {
       <div className="container">
         <div className="d-flex justify-content-between align-items-center">
           <div className="logo">
-            <img src='/src/images/hn9-codecraft.svg' alt='Hn9 Codecraft'/>
+            <img src={SiteImage} alt='Hn9 Codecraft'/>
           </div>
-          <div>
-            <a href="#" className='text-black mx-4'>How to Work</a>
+          <div className='d-flex align-items-center gap-2'>
+            <a href="#" className='text-black mx-4 font-outline'>How to Work</a>
             {isLoggedIn ? (
               <div className="d-flex align-items-center">
-                <button
-                  className="btn btn-link text-decoration-none me-3"
+                  <button
+                  className="btn btn-link text-black text-decoration-none border-end rounded-0"
                   onClick={goToDashboard}
                 >
-                  <i className="bi bi-person-circle fs-4"></i>
-                  <span className="ms-2">{user?.email}</span>
+                  <span >Dashboard</span>
                 </button>
                 <button
-                  className="btn btn-outline-danger btn-sm"
+                  className="btn btn-link text-decoration-none me-3 fw-semibold text-black"
+                  onClick={goToDashboard}
+                >
+                  <span >Hello, {user?.firstname}</span>
+                </button>
+                <button
+                  className="btn btn-primary btn-sm"
                   onClick={handleLogout}
                 >
                   Logout
