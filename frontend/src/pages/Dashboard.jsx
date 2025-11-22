@@ -33,35 +33,44 @@ export default function Dashboard() {
       navigate('/login');
     } else {
       const storedUser = JSON.parse(localStorage.getItem('user'));
-      // Calculate total hours from purchased plans
-      const totalHours = storedUser.purchasedPlans?.reduce((sum, plan) => sum + (plan.hours || 0), 0) || 0;
-      setUser({ ...storedUser, totalHours });
-
+      
       // Fetch data from API
-      fetchData();
+      const fetchAndSetUser = async () => {
+        try {
+          const usersResponse = await api.getUsers();
+          setUsers(usersResponse.data);
+
+          // Find the current logged-in user by email from storedUser
+          const currentUserFromApi = usersResponse.data.find(u => u.email === storedUser.email);
+          
+          if (currentUserFromApi) {
+            // Calculate totalHours using totalHours field from purchasedPlans
+            const totalHours = currentUserFromApi.purchasedPlans?.reduce((sum, plan) => sum + (plan.totalHours || 0), 0) || 0;
+            setUser({ ...currentUserFromApi, totalHours });
+            localStorage.setItem('user', JSON.stringify({...currentUserFromApi, totalHours }));
+          } else {
+            // fallback if user not found in API response
+            setUser(storedUser);
+          }
+
+          const plansResponse = await api.getPlans();
+          setPlans(plansResponse.data);
+
+          // Load tasks from localStorage (assuming tasks are local for now)
+          const storedTasks = localStorage.getItem('tasksData');
+          if (storedTasks) {
+            setTasks(JSON.parse(storedTasks));
+          }
+        } catch (error) {
+          console.error('Error fetching data:', error);
+          // fallback
+          setUser(storedUser);
+        }
+      };
+
+      fetchAndSetUser();
     }
   }, [navigate]);
-
-  const fetchData = async () => {
-    try {
-      const [usersResponse, plansResponse] = await Promise.all([
-        api.getUsers(),
-        api.getPlans()
-      ]);
-      console.log('Fetched users:', usersResponse.data);
-      console.log('Fetched plans:', plansResponse.data);
-      setUsers(usersResponse.data);
-      setPlans(plansResponse.data);
-
-      // Load tasks from localStorage (assuming tasks are local for now)
-      const storedTasks = localStorage.getItem('tasksData');
-      if (storedTasks) {
-        setTasks(JSON.parse(storedTasks));
-      }
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  };
 
   const handleLogout = () => {
     localStorage.removeItem('isLoggedIn');
@@ -126,45 +135,6 @@ export default function Dashboard() {
     }
   };
 
-  // Task CRUD
-  const addTask = (task) => {
-    const updatedTasks = [...tasks, { ...task, id: Date.now().toString() }];
-    setTasks(updatedTasks);
-    // Update localStorage
-    localStorage.setItem('tasksData', JSON.stringify(updatedTasks));
-    // Update user's spent hours
-    updateUserSpentHours(updatedTasks);
-  };
-
-  const editTask = (id, updatedTask) => {
-    const updatedTasks = tasks.map(t => t.id === id ? updatedTask : t);
-    setTasks(updatedTasks);
-    setEditingTask(null);
-    // Update localStorage
-    localStorage.setItem('tasksData', JSON.stringify(updatedTasks));
-    // Update user's spent hours
-    updateUserSpentHours(updatedTasks);
-  };
-
-  const deleteTask = (id) => {
-    const updatedTasks = tasks.filter(t => t.id !== id);
-    setTasks(updatedTasks);
-    // Update localStorage
-    localStorage.setItem('tasksData', JSON.stringify(updatedTasks));
-    // Update user's spent hours
-    updateUserSpentHours(updatedTasks);
-  };
-
-  const updateUserSpentHours = (currentTasks = tasks) => {
-    const totalSpentHours = currentTasks.reduce((sum, task) => sum + (parseFloat(task.hours) || 0), 0);
-    const updatedUsers = users.map(u => u.id === user.id ? { ...u, spentHours: totalSpentHours } : u);
-    setUsers(updatedUsers);
-    localStorage.setItem('usersData', JSON.stringify(updatedUsers));
-    // Update current user state and localStorage
-    const updatedUser = { ...user, spentHours: totalSpentHours };
-    setUser(updatedUser);
-    localStorage.setItem('user', JSON.stringify(updatedUser));
-  };
 
   if (!user) return <div>Loading...</div>;
 
@@ -211,7 +181,7 @@ export default function Dashboard() {
 
         <PlanEditModal editingPlan={editingPlan} setEditingPlan={setEditingPlan} addPlan={addPlan} editPlan={editPlan} />
         <UserEditModal editingUser={editingUser} setEditingUser={setEditingUser} addUser={addUser} editUser={editUser} />
-        <TaskEditModal editingTask={editingTask} setEditingTask={setEditingTask} addTask={addTask} editTask={editTask} />
+     
       </div>
     </main>
   );
