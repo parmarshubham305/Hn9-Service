@@ -31,6 +31,9 @@ export default function OurBrands () {
                      <img src={Boqtiquebar} alt="Boqtiquebar" />
                 </div>
                  <div className="img-box bg-lighter">
+                    <img src={Volante} alt="Volante" />
+                </div>
+                 <div className="img-box bg-lighter">
                     <img src={Dig} alt="Dig" /> 
                 </div>
                  <div className="img-box bg-lighter">
@@ -42,8 +45,8 @@ export default function OurBrands () {
                  <div className="img-box bg-lighter">
                     <img src={Pink} alt="Pink Elephant" />
                 </div>
-                 <div className="img-box bg-lighter">
-                    <img src={Dk} alt="pos365" />
+                  <div className="img-box bg-lighter">
+                     <img src={Stayable} alt="Stayable" />
                 </div>
                   <div className="img-box bg-lighter">
                    <img src={Mahakali} alt="Mahakali" />
@@ -52,25 +55,38 @@ export default function OurBrands () {
                 <div className="img-box bg-lighter">
                     <img src={pos365} alt="pos365" />
                 </div>
-
                 <div className="img-box bg-lighter">
                     <img src={siteSurgery} alt="siteSurgery" />
                 </div>
-                <div className="img-box bg-lighter">
-                     <img src={Stayable} alt="Stayable" />
-                </div>
+              
                  <div className="img-box bg-lighter">
                      <img src={Swarat} alt="Swarat" />
                 </div>
                  <div className="img-box bg-lighter">
                     <img src={Timmy} alt="Timmy" />
                 </div>
-                <div className="img-box bg-lighter">
-                    <img src={Volante} alt="Volante" />
+                 <div className="img-box bg-lighter">
+                    <img src={Dk} alt="pos365" />
                 </div>
                 <div className="img-box bg-lighter">
                     <img src={TheIron} alt="TheIron" />
                 </div>
+                 <div className="img-box bg-lighter">
+                    <img src={TheIron} alt="TheIron" />
+                </div>
+                 <div className="img-box bg-lighter">
+                    <img src={TheIron} alt="TheIron" />
+                </div>
+                 <div className="img-box bg-lighter">
+                    <img src={TheIron} alt="TheIron" />
+                </div>
+                 <div className="img-box bg-lighter">
+                    <img src={TheIron} alt="TheIron" />
+                </div>
+                 <div className="img-box bg-lighter">
+                    <img src={TheIron} alt="TheIron" />
+                </div>
+                {/* Remaining Logo  The Humbeld home, Shop floor advisory,know more solution, botique villa */}
             </div>
         </div>
     </div>

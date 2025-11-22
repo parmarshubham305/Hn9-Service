@@ -9,6 +9,12 @@ import TasksTab from '../components/admin/TasksTab';
 import PlanEditModal from '../components/admin/PlanEditModal';
 import UserEditModal from '../components/admin/UserEditModal';
 import TaskEditModal from '../components/admin/TaskEditModal';
+import DeshboardImg from '../images/deshboard.svg';
+import LogoutImg from '../images/logout.svg';
+import PlanImg from '../images/plan.svg';
+import ProfileImg from '../images/profile.svg';
+import UsersImg from '../images/user.svg';
+
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -180,21 +186,21 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="container-fluid mt-5">
-      <div className="d-flex justify-content-between align-items-center mb-4">
-        <h2>Dashboard</h2>
-        <button className="btn btn-danger" onClick={handleLogout}>Logout</button>
-      </div>
-
-      <div className="row">
+    <div className="container">
+      <div className="row g-0">
         {/* Left Sidebar Tabs */}
         <div className="col-md-3">
           <div className="nav flex-column nav-pills" role="tablist">
-            <button className={`nav-link ${activeTab === 'dashboard' ? 'active' : ''}`} onClick={() => setActiveTab('dashboard')}>Dashboard</button>
-            <button className={`nav-link ${activeTab === 'users' ? 'active' : ''}`} onClick={() => setActiveTab('users')}>All Users</button>
-            <button className={`nav-link ${activeTab === 'purchased' ? 'active' : ''}`} onClick={() => setActiveTab('purchased')}>Purchased Services</button>
-            <button className={`nav-link ${activeTab === 'services' ? 'active' : ''}`} onClick={() => setActiveTab('services')}>All Services</button>
-            <button className={`nav-link ${activeTab === 'tasks' ? 'active' : ''}`} onClick={() => setActiveTab('tasks')}>Tasks</button>
+            <button className={`nav-link sidebar-link rounded-0 py-2 px-4 text-start ${activeTab === 'dashboard' ? 'active' : ''}`} onClick={() => setActiveTab('dashboard')}>
+               <img src={DeshboardImg} alt="deshboard" className='me-3'/>Dashboard</button>
+            <button className={`nav-link sidebar-link rounded-0 py-2 px-4 text-start ${activeTab === 'users' ? 'active' : ''}`} onClick={() => setActiveTab('users')}>
+               <img src={UsersImg} alt="deshboard" className='me-3'/>All Users</button>
+            <button className={`nav-link sidebar-link rounded-0 py-2 px-4 text-start ${activeTab === 'purchased' ? 'active' : ''}`} onClick={() => setActiveTab('purchased')}>
+               <img src={PlanImg} alt="deshboard" className='me-3' />Purchased Services</button>
+            <button className={`nav-link sidebar-link rounded-0 py-2 px-4 text-start ${activeTab === 'services' ? 'active' : ''}`} onClick={() => setActiveTab('services')}>
+               <img src={ProfileImg} alt="deshboard" className='me-3'/>All Services</button>
+            <button className={`nav-link sidebar-link rounded-0 py-2 px-4 text-start ${activeTab === 'tasks' ? 'active' : ''}`} onClick={() => setActiveTab('tasks')}>
+               <img src={LogoutImg} alt="deshboard" className='me-3'/>Tasks</button>
           </div>
         </div>
 
