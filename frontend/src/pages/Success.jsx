@@ -17,26 +17,45 @@ export default function Success() {
       // For demo purposes, we'll assume the cart was stored in sessionStorage
       const cart = JSON.parse(sessionStorage.getItem('checkoutCart') || '[]');
 
+      const purchaseDate = new Date();
+      const dateStr = purchaseDate.toISOString().split('T')[0]; // YYYY-MM-DD format
+      const dayStr = purchaseDate.toLocaleDateString('en-US', { weekday: 'long' }); // Full day name
+
       if (cart.length > 0) {
-        // Update user's purchased plans
+        // For each cart item, call updateUserPurchase API with required fields
+        cart.forEach(item => {
+          // Assume 'planDuration' field exists in cart item, else default to "1 month"
+          const plan = item.planDuration || "1 month";
+          api.updateUserPurchase({
+            email: user.email,
+            serviceName: item.title,
+            price: item.price,
+            hours: item.hours,
+            date: dateStr,
+            day: dayStr,
+            plan: plan,
+          }).then(() => {
+            // Optionally handle success per item
+          }).catch(error => {
+            console.error('Error updating user purchase:', error);
+          });
+        });
+
+        // Update local user purchasedPlans and totalHours as before
         const purchasedPlans = cart.map(item => ({
           serviceName: item.title,
           price: item.price,
           hours: item.hours,
-          date: new Date().toISOString().split('T')[0], // YYYY-MM-DD format
-          day: new Date().toLocaleDateString('en-US', { weekday: 'long' }) // Full day name
+          date: dateStr,
+          day: dayStr,
+          plan: item.planDuration || "1 month",
         }));
 
         user.purchasedPlans = [...(user.purchasedPlans || []), ...purchasedPlans];
         user.totalHours = (user.totalHours || 0) + cart.reduce((sum, item) => sum + item.hours, 0);
 
-        // Update user via API
-        api.updateUser(user.id, user).then(() => {
-          // Update user in localStorage
-          localStorage.setItem('user', JSON.stringify(user));
-        }).catch(error => {
-          console.error('Error updating user:', error);
-        });
+        // Update user in localStorage
+        localStorage.setItem('user', JSON.stringify(user));
 
         // Clear session cart
         sessionStorage.removeItem('checkoutCart');

@@ -4,3 +4,5 @@
 /server/.env
 /server/.env.local 
 /server/.env.example
+/api/stripe
+/api/api.php

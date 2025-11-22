@@ -25,6 +25,10 @@ export const api = {
   updateUser: (id, userData) => apiClient.put(`${API_BASE_URL}?resource=users&id=${id}`, userData),
   deleteUser: (id) => apiClient.delete(`${API_BASE_URL}?resource=users&id=${id}`),
 
+  // New method to update user purchase
+  updateUserPurchase: (purchaseData) =>
+    axios.post(`${API_BASE_URL}?resource=update-user-purchase`, purchaseData),
+
   // Plans
   getPlans: () => apiClient.get(`${API_BASE_URL}?resource=plans`),
   createPlan: (planData) => apiClient.post(`${API_BASE_URL}?resource=plans`, planData),

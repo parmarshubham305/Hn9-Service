@@ -1,0 +1,78 @@
+{
+    "id": 1,
+    "firstname": "Admin",
+    "lastname": "User",
+    "email": "admin@admin.com",
+    "password": "Admin@123",
+    "phone": "+1234567890",
+    "country": "Admin",
+    "totalHours": 2,
+    "spentHours": 0,
+    "purchasedPlans": [],
+    "0": {
+        "firstname": "Shubham",
+        "lastname": "Parmar",
+        "email": "shubham.houseno9@gmail.com",
+        "password": "@Gj112325",
+        "phone": "01231231231",
+        "country": "India",
+        "totalHours": 0,
+        "spentHours": 0,
+        "purchasedPlans": []
+    },
+    "1": {
+        "firstname": "Shyam",
+        "lastname": "Patel",
+        "email": "shyam.houseno9@gmail.com",
+        "password": "@Gj112325",
+        "phone": "01231231231",
+        "country": "India",
+        "totalHours": 0,
+        "spentHours": 0,
+        "purchasedPlans": []
+    },
+    "2": {
+        "firstname": "Arpit",
+        "lastname": "Hn9",
+        "email": "arpit.houseno9@gmail.com",
+        "password": "@Gj112325",
+        "phone": "01231231231",
+        "country": "India",
+        "totalHours": 0,
+        "spentHours": 0,
+        "purchasedPlans": []
+    },
+    "3": {
+        "firstname": "Vivek",
+        "lastname": "Hn9",
+        "email": "vivek.houseno9@gmail.com",
+        "password": "@Gj112325",
+        "phone": "01231231231",
+        "country": "India",
+        "totalHours": 0,
+        "spentHours": 0,
+        "purchasedPlans": []
+    },
+    "4": {
+        "firstname": "Test",
+        "lastname": "Test",
+        "email": "test@test.com",
+        "password": "@Gj112325",
+        "phone": "01231231231",
+        "country": "India",
+        "totalHours": 0,
+        "spentHours": 0,
+        "purchasedPlans": []
+    },
+    "5": {
+        "firstname": "Test1",
+        "lastname": "Test",
+        "email": "testuser2@test.com",
+        "password": "@Gj112325",
+        "phone": "01231231231",
+        "country": "India",
+        "totalHours": 0,
+        "spentHours": 0,
+        "purchasedPlans": []
+    }
+}
