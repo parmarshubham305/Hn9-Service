@@ -86,7 +86,7 @@ const totalHours = selectedOption
           <div className="mt-4 pt-4 border-top border-light d-flex align-items-center justify-content-between flex-wrap gap-3">
            <div className='pe-5 border-end border-light'> 
               <h4 className='fw-semibold fs-3 text-primary mb-0'>{selectedMonth} Days</h4>
-               <p className='mb-0 font-outline'> For One Month</p>
+               <p className='mb-0 font-outline'> For {selectedPlan === '1' ? '1 Month' : '3 Months'}</p>
             </div>
             
             <div className='pe-5 border-end border-light'>
