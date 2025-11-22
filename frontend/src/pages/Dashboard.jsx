@@ -186,33 +186,33 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="container">
-      <div className="row g-0">
-        {/* Left Sidebar Tabs */}
-        <div className="col-md-3">
-          <div className="nav flex-column nav-pills" role="tablist">
-            <button className={`nav-link sidebar-link rounded-0 py-2 px-4 text-start ${activeTab === 'dashboard' ? 'active' : ''}`} onClick={() => setActiveTab('dashboard')}>
-               <img src={DeshboardImg} alt="deshboard" className='me-3'/>Dashboard</button>
-            <button className={`nav-link sidebar-link rounded-0 py-2 px-4 text-start ${activeTab === 'users' ? 'active' : ''}`} onClick={() => setActiveTab('users')}>
-               <img src={UsersImg} alt="deshboard" className='me-3'/>All Users</button>
-            <button className={`nav-link sidebar-link rounded-0 py-2 px-4 text-start ${activeTab === 'purchased' ? 'active' : ''}`} onClick={() => setActiveTab('purchased')}>
-               <img src={PlanImg} alt="deshboard" className='me-3' />Purchased Services</button>
-            <button className={`nav-link sidebar-link rounded-0 py-2 px-4 text-start ${activeTab === 'services' ? 'active' : ''}`} onClick={() => setActiveTab('services')}>
-               <img src={ProfileImg} alt="deshboard" className='me-3'/>All Services</button>
-            <button className={`nav-link sidebar-link rounded-0 py-2 px-4 text-start ${activeTab === 'tasks' ? 'active' : ''}`} onClick={() => setActiveTab('tasks')}>
-               <img src={LogoutImg} alt="deshboard" className='me-3'/>Tasks</button>
+    <main className="min-vh-100">
+      <div className="container">
+        <div className="row g-0">
+          {/* Left Sidebar Tabs */}
+          <div className="col-md-3 border-start border-end min-vh-100">
+            <div className="nav flex-column nav-pills" role="tablist">
+              <button className={`nav-link d-flex align-items-center font-outline rounded-0 py-3 px-4 text-start border ${activeTab === 'dashboard' ? 'active border-primary' : ''}`} onClick={() => setActiveTab('dashboard')}>
+                <img width="23" height="23" src={DeshboardImg} alt="deshboard" className={`me-3 ${activeTab === 'dashboard' ? 'invert-img' : ''}`}/>Dashboard</button>
+              <button className={`nav-link d-flex align-items-center font-outline rounded-0 py-3 px-4 text-start border ${activeTab === 'users' ? 'active border-primary' : ''}`} onClick={() => setActiveTab('users')}> <img width="23" height="23" src={UsersImg} alt="deshboard"  className={`me-3 ${activeTab === 'users' ? 'invert-img' : ''}`}/>All Users</button>
+              <button className={`nav-link d-flex align-items-center font-outline rounded-0 py-3 px-4 text-start border ${activeTab === 'purchased' ? 'active border-primary' : ''}`} onClick={() => setActiveTab('purchased')}>
+                <img width="23" height="23" src={PlanImg} alt="deshboard"     className={`me-3 ${activeTab === 'purchased' ? 'invert-img' : ''}`} />Purchased Services</button>
+              <button className={`nav-link d-flex align-items-center font-outline rounded-0 py-3 px-4 text-start border ${activeTab === 'services' ? 'active border-primary' : ''}`} onClick={() => setActiveTab('services')}>
+                <img width="23" height="23" src={ProfileImg} alt="deshboard"     className={`me-3 ${activeTab === 'services' ? 'invert-img' : ''}`}/>All Services</button>
+              <button className={`nav-link d-flex align-items-center font-outline rounded-0 py-3 px-4 text-start border ${activeTab === 'tasks' ? 'active border-primary' : ''}`} onClick={() => setActiveTab('tasks')}> <img width="23" height="23" src={LogoutImg} alt="deshboard"     className={`me-3 ${activeTab === 'tasks' ? 'invert-img' : ''}`}/>Tasks</button>
+            </div>
+          </div>
+
+          {/* Right Content Area */}
+          <div className="col-md-9">
+            {renderTabContent()}
           </div>
         </div>
 
-        {/* Right Content Area */}
-        <div className="col-md-9">
-          {renderTabContent()}
-        </div>
+        <PlanEditModal editingPlan={editingPlan} setEditingPlan={setEditingPlan} addPlan={addPlan} editPlan={editPlan} />
+        <UserEditModal editingUser={editingUser} setEditingUser={setEditingUser} addUser={addUser} editUser={editUser} />
+        <TaskEditModal editingTask={editingTask} setEditingTask={setEditingTask} addTask={addTask} editTask={editTask} />
       </div>
-
-      <PlanEditModal editingPlan={editingPlan} setEditingPlan={setEditingPlan} addPlan={addPlan} editPlan={editPlan} />
-      <UserEditModal editingUser={editingUser} setEditingUser={setEditingUser} addUser={addUser} editUser={editUser} />
-      <TaskEditModal editingTask={editingTask} setEditingTask={setEditingTask} addTask={addTask} editTask={editTask} />
-    </div>
+    </main>
   );
 }

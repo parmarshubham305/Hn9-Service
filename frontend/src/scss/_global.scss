@@ -187,6 +187,12 @@ a {
 .bg-lighter{
     background-color: $light !important;
 }
+.bg-primary-light{
+    background-color: #BDE6FF !important;
+}
+.bg-secondary-light{
+    background-color: #FFEFCC !important;
+}
 .transition-none{
     transition: none !important;
 }
@@ -231,4 +237,7 @@ a {
 			}
 		}
 	}
+}
+.invert-img {
+  filter:brightness(0) invert(1);
 }

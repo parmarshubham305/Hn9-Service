@@ -769,7 +769,7 @@ progress {
 }
 @media (min-width: 1400px) {
   .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
-    max-width: 1480px;
+    max-width: 1340px;
   }
 }
 :root {
@@ -12110,6 +12110,14 @@ a:hover, a:focus, a:active {
   background-color: rgba(202, 202, 202, 0.1019607843) !important;
 }
 
+.bg-primary-light {
+  background-color: #BDE6FF !important;
+}
+
+.bg-secondary-light {
+  background-color: #FFEFCC !important;
+}
+
 .transition-none {
   transition: none !important;
 }
@@ -12153,6 +12161,10 @@ a:hover, a:focus, a:active {
     left: 50%;
   }
 }
+.invert-img {
+  filter: brightness(0) invert(1);
+}
+
 .section-heading {
   font-size: 28px;
   font-size: 1.75rem;
@@ -12195,6 +12207,41 @@ a:hover, a:focus, a:active {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
+}
+
+.hours-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+}
+.hours-card .hours-cardbody {
+  padding: 20px;
+  text-align: end;
+  min-height: 200px;
+  display: flex;
+  align-items: end;
+  justify-content: end;
+}
+.hours-card .hours-cardbody .total-hours {
+  position: absolute;
+  top: -50px;
+  left: -30px;
+  border-radius: 100%;
+  width: 160px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hours-card .hours-cardbody .total-hours > span {
+  font-size: 36px;
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-top: 30px;
+}
+.hours-card .hours-cardbody .total-hours > span span {
+  font-size: 24px;
+  font-size: 1.5rem;
 }
 
 /*# sourceMappingURL=styles.css.map */
