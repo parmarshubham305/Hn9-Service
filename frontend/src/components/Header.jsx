@@ -38,7 +38,7 @@ export default function Header({ onLoginClick }) {
             <img src={SiteImage} alt='Hn9 Codecraft'/>
           </div>
           <div className='d-flex align-items-center gap-2'>
-            <a href="#" className='text-black mx-4 font-outline'>How to Work</a>
+            <a href="" className='text-black mx-4 font-outline'>How to Work</a>
             {isLoggedIn ? (
               <div className="d-flex align-items-center">
                   <button

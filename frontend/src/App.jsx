@@ -71,17 +71,17 @@ export default function App(){
         <Route path="/" element={
           <main>
             <Banner/>
-            <div className="service-section section-spacing bg-lighter">
-              <div className="main-heading mb-5 pb-4">
+            <div className="service-section section-spacing bg-lighter mt-md-3">
+              <div className="main-heading">
                 <div className="container">
-                    <h2 className="h1 text-primary text-center fw-bold ">Looking to Hire Skilled Developers?</h2>
-                    <p className="text-center">At Hn9 Codecraft, we bring your ideas to life with expert web and app development services. Our dedicated team of skilled developers builds high-performance websites and mobile apps with quality, speed, and innovation.</p>
+                    <h2 className="text-primary text-center fw-bold mb-3">Flexible Hourly Plans Designed to Fit Your Workload.</h2>
+                    <p className="text-center mb-0">Pick your preferred hours and let our AI-powered development team deliver fast, reliable, and scalable results. Each hour works smarter with automation, expert focus, and a workflow designed to accelerate your business.</p>
                 </div>
               </div>
               <div className="container">
-                <div className='row g-4 align-items-start'>
+                <div className='row align-items-start'>
                   <div className='col-md-8 col-12'>{servicesData.map(s=>(<ServiceCard key={s.id} service={s} onAdd={addToCart}/>))}</div>
-                  <div className='col-md-4 col-12 position-sticky top-0 '><Cart cart={cart} onLoginClick={handleLoginClick}/></div>
+                  <div className='col-md-4 col-12 position-sticky top-0 mt-md-5'><Cart cart={cart} onLoginClick={handleLoginClick}/></div>
                 </div>
               </div>
             </div>

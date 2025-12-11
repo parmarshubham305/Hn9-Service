@@ -18,9 +18,9 @@ const totalHours = selectedOption
 
   return (
     <>
-      <div className="card bg-white rounded-3  mx-auto mb-5 position-sticky top-0">
+      <div className="card bg-white rounded-3  mx-auto mt-5 ">
         <div className="card-header d-flex justify-content-between align-items-center py-3 px-4 bg-primary text-white rounded-top-3">
-          <h2 className="h3 fw-semibold mb-0 text-white">{service.title}</h2>
+          <h3 className="fw-semibold mb-0 text-white">{service.title}</h3>
           <div className="d-flex">
             <button
               onClick={() => setSelectedPlan("1")}
@@ -36,7 +36,7 @@ const totalHours = selectedOption
             </button>
           </div>
         </div>
-        <div className="card-body px-4 py-5">
+        <div className="card-body p-md-4 p-3">
             {/* Hour Selection */}
           <div className='mb-4'>
             <div className="row gap-3 px-3">
@@ -55,8 +55,8 @@ const totalHours = selectedOption
                     onChange={() => setSelectedHours(p.hours)}
                     className="d-none"
                   />
-                  <span className='display-4 fw-semibold lh-1'>{p.hours} </span>
-                  <span className='d-block fw-medium fs-5 lh-sm mt-2 font-outline'>Hours for<br/> each day</span>
+                  <span className='display-5 fw-semibold lh-1'>{p.hours} </span>
+                  <span className='d-block fw-medium fs-6 lh-sm mt-2 font-outline'>Hours / Day</span>
                 </label>
               ))}
             </div>
@@ -66,7 +66,7 @@ const totalHours = selectedOption
           <h3 className='h4 text-primary fw-semibold mb-3'>What's include:</h3>
           <ul className='list-unstyled mb-3 column-count-2'>
             {service.description.map((item, index) => (
-              <li key={index} className='mb-2 d-flex align-items-start'>
+              <li key={index} className='mb-2 d-flex align-items-start standard-font'>
                 <img src={checkIcon} alt="check" className='me-2 mt-2' />
                 {item}
               </li>
@@ -75,30 +75,30 @@ const totalHours = selectedOption
 
           {/* Read More Button */}
           <button
-            className='btn btn-link p-0 text-secondary text-decoration-none fs-5 fw-semibold'
+            className='btn btn-link p-0 text-secondary text-decoration-none fs-6 fw-semibold'
             onClick={() => setShowDetails(true)}
           >
-            Read More <i className='bi bi-chevron-right'></i>
+            <u>Read More</u>
           </button>
 
         
           {/* Calculations */}
           <div className="mt-4 pt-4 border-top border-light d-flex align-items-center justify-content-between flex-wrap gap-3">
            <div className='pe-5 border-end border-light'> 
-              <h4 className='fw-semibold fs-3 text-primary mb-0'>{selectedMonth} Days</h4>
+              <h4 className='0fw-semibold fs-5 text-primary mb-0'>{selectedMonth} Days</h4>
                <p className='mb-0 font-outline'> For {selectedPlan === '1' ? '1 Month' : '3 Months'}</p>
             </div>
             
             <div className='pe-5 border-end border-light'>
-                <h4 className='fw-semibold fs-3 text-primary mb-0'> {totalHours} </h4>
+                <h4 className='0fw-semibold fs-5 text-primary mb-0'> {totalHours} </h4>
                 <p className='mb-0 font-outline'> Total Hours</p>
             </div>
             <div className='pe-5 border-end border-light'>
-               <h4 className='fw-semibold fs-3 text-primary mb-0'>${selectedOption?.price}/hr</h4>
+               <h4 className='0fw-semibold fs-5 text-primary mb-0'>${selectedOption?.price}/hr</h4>
              <p className='mb-0 font-outline'>Hourly Price</p>
             </div>
             <div>
-               <h4 className='fw-semibold fs-3 text-primary mb-0'>${totalPrice.toFixed(2)}</h4>
+               <h4 className='0fw-semibold fs-5 text-primary mb-0'>${totalPrice.toFixed(2)}</h4>
                  <p className='mb-0 font-outline'> Total Price</p>
             </div>
               <button

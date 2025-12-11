@@ -82,8 +82,8 @@ export default function Cart({cart, onLoginClick}){
     }
   };
 
-  return(<div className='card bg-white p-4 rounded-3 shadow position-sticky top-0 h-100'>
-    <h3 className='card-title text-primary fw-semibold mb-4 pb-4 border-bottom border-light'>Order Summary</h3>
+  return(<div className='card bg-white p-3 rounded-3 position-sticky top-0 h-100'>
+    <h3 className='card-title text-primary fw-semibold mb-3 pb-3 border-bottom border-light'>Order Summary</h3>
     {cart.length === 0 ? (
       <p className='text-muted'>No items in cart</p>
     ) : (
@@ -150,7 +150,7 @@ export default function Cart({cart, onLoginClick}){
       {isLoggedIn ? 'Checkout' : 'Login to Checkout'}
     </button>
 
-    <h4 className='mb-3 pt-4'>Payment Accept:</h4>
+    <h4 className='mb-3 pt-3 mt-3 border-top'>Payment Accept:</h4>
     <div className='d-flex align-items-center justify-content-between'>
       <img src={PayPal} alt="PayPal" />
       <img src={Mastercard} alt="Mastercard" />

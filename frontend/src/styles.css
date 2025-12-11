@@ -754,12 +754,12 @@ progress {
 }
 @media (min-width: 768px) {
   .container-md, .container-sm, .container {
-    max-width: 720px;
+    max-width: 768px;
   }
 }
 @media (min-width: 992px) {
   .container-lg, .container-md, .container-sm, .container {
-    max-width: 960px;
+    max-width: 991px;
   }
 }
 @media (min-width: 1200px) {
@@ -769,7 +769,7 @@ progress {
 }
 @media (min-width: 1400px) {
   .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
-    max-width: 1480px;
+    max-width: 1280px;
   }
 }
 :root {
@@ -11897,8 +11897,8 @@ textarea.form-control-lg {
 body {
   margin: 0;
   padding: 0;
-  font-size: 18px;
-  font-size: 1.125rem;
+  font-size: 16px;
+  font-size: 1rem;
   font-family: "Open Sans", sans-serif;
   display: flex;
   flex-direction: column;
@@ -11998,9 +11998,19 @@ h1, .h1 {
 }
 
 h2, .h2 {
+  font-size: 32px;
+  font-size: 2rem;
+  font-family: "Outfit", sans-serif;
+}
+
+h3, .h3 {
   font-size: 24px;
   font-size: 1.5rem;
-  font-family: "Outfit", sans-serif;
+}
+
+h4, .h4 {
+  font-size: 18px;
+  font-size: 1.125rem;
 }
 
 h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
@@ -12008,8 +12018,8 @@ h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 }
 
 p {
-  font-size: 18px;
-  font-size: 1.125rem;
+  font-size: 16px;
+  font-size: 1rem;
   font-family: "Open Sans";
 }
 
@@ -12029,10 +12039,15 @@ a:hover, a:focus, a:active {
   padding: 4rem 0;
 }
 
+.standard-font {
+  font-size: 14px;
+  font-size: 0.875rem;
+}
+
 /***** Button ******/
 .btn {
-  font-size: 18px;
-  font-size: 1.125rem;
+  font-size: 16px;
+  font-size: 1rem;
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -ms-transition: all 0.3s ease;
@@ -12048,7 +12063,7 @@ a:hover, a:focus, a:active {
 .btn-primary {
   color: #ffffff;
   background: #143e57;
-  padding: 0.6rem 2.5rem;
+  padding: 0.6rem 2rem;
 }
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary:focus, .btn-primary.disabled, .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active:focus {
   background: rgb(24.7663551402, 76.7757009346, 107.7336448598);
@@ -12063,7 +12078,7 @@ a:hover, a:focus, a:active {
 .btn-secondary {
   color: #ffffff;
   background: #f0a80b;
-  padding: 0.6rem 2.5rem;
+  padding: 0.6rem 2rem;
 }
 .btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active, .btn-secondary:focus, .btn-secondary:disabled, .btn-secondary:not(:disabled):not(.disabled):active, .btn-secondary:not(:disabled):not(.disabled).active, .btn-secondary:not(:disabled):not(.disabled):active:focus {
   background: rgb(215.6175298805, 150.9322709163, 9.8824701195);
@@ -12089,7 +12104,7 @@ a:hover, a:focus, a:active {
 }
 @media only screen and (min-width: 768px) {
   .section-spacing {
-    padding: 100px 0px;
+    padding: 70px 0px;
   }
 }
 
@@ -12144,7 +12159,7 @@ a:hover, a:focus, a:active {
     padding: 1rem 0;
   }
   .accordion-credit-items .accordion-header .accordion-button {
-    font-size: 18px;
+    font-size: 16px;
   }
 }
 @media (max-width: 991px) {

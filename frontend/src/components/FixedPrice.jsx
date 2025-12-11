@@ -7,8 +7,8 @@ export default function FixedPrice() {
         <div className="container">
             <div className="row justify-content-between">
                 <div className="col-md-5">
-                    <h2 className='fw-semibold text-primary section-heading'>Let’s Build Something Great Together!</h2>
-                    <p className='fs-5 '>At Hn9 Codecraft, our Fixed Price Resource Allocation model ensures you get dedicated design and development expertise at a transparent, pre-defined cost. We assign the right professionals to your project based on scope and complexity — ensuring maximum efficiency, predictable timelines, and no budget surprises. From planning to deployment, our team stays focused on delivering measurable results that align perfectly with your business goals.</p>
+                    <h2 className='fw-semibold text-primary'>Let’s Build Something Great Together!</h2>
+                    <p className='mb-0 mt-4'>At Hn9 Codecraft, our Fixed Price Resource Allocation model ensures you get dedicated design and development expertise at a transparent, pre-defined cost. We assign the right professionals to your project based on scope and complexity — ensuring maximum efficiency, predictable timelines, and no budget surprises. From planning to deployment, our team stays focused on delivering measurable results that align perfectly with your business goals.</p>
                 </div>
                 <div className="col-md-6">
                     <div className="form">
@@ -51,7 +51,7 @@ export default function FixedPrice() {
                             <div className="form-row row mb-4">
                                 <div className="col-12">
                                     <label htmlFor="Title" className="form-label fw-medium font-outline">Project Description</label>
-                                    <textarea name="message" id="message" placeholder='Select Message' className='w-100 form-control'></textarea>
+                                    <textarea name="message" id="message" rows="5" placeholder='Select Message' className='w-100 form-control'></textarea>
                                 </div>
                             </div>
                              <div className="form-row row mb-4">
@@ -59,7 +59,7 @@ export default function FixedPrice() {
                                    <input type="file" className='form-control' />
                                 </div>
                             </div>
-                              <div className="form-row row mb-4">
+                              <div className="form-row row">
                                 <div className="col-12">
                                    <input type="submit" className='btn btn-secondary' value="Send Quote" />
                                 </div>

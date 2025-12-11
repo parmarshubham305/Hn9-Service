@@ -20,7 +20,7 @@ export default function OurBrands () {
     <div className="section-spacing">
         <div className="container">
             <div className="text-center">
-                <h2 className='fw-semibold text-primary section-heading heading-center text-center'>Brands That Believe in Us</h2>
+                <h2 className='fw-semibold text-primary heading-center text-center'>Brands That Believe in Us</h2>
                 <p className='mb-5 text-center'>We collaborate with ambitious brands that value creativity, technology, and long-term success.</p>
             </div>
             <div className="image-wrapper d-flex align-items-center justify-content-center flex-wrap">

@@ -50,7 +50,7 @@ export default function Testimonials() {
     <div className="section-spacing bg-lighter">
       <div className="container">
         <div className="text-center mb-5">
-          <h2 className="fw-semibold text-primary section-heading heading-center text-center">
+          <h2 className="fw-semibold text-primary heading-center text-center">
             Testimonies
           </h2>
         </div>
@@ -70,7 +70,7 @@ export default function Testimonials() {
           {testimonials.length > 0 ? (
             testimonials.map((item, index) => (
               <SwiperSlide key={index}>
-                <div className="card shadow-sm border-0 bg-primary text-white p-4 h-100">
+                <div className="card shadow-sm border-0 bg-primary text-white p-4 h-100 rounded-3">
                   <div className="d-flex align-items-center mb-4">
                     <img
                       src={item.image || "https://via.placeholder.com/80"}

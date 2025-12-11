@@ -26,7 +26,7 @@
 body {
     margin: 0;
     padding: 0;
-    @include fontSize(18px);
+    @include fontSize(16px);
     font-family: "Open Sans", sans-serif;
     display: flex;
     flex-direction: column;
@@ -94,9 +94,11 @@ a {
 }
 
 h1{@include fontSize(34px);font-family: "Outfit", sans-serif;color: $secondary;}
-h2{@include fontSize(24px);font-family: "Outfit", sans-serif;}
+h2{@include fontSize(32px);font-family: "Outfit", sans-serif;}
+h3{@include fontSize(24px);}
+h4{@include fontSize(18px);}
 h3,h4,h5,h6{font-family: "Outfit", sans-serif;}
-p{@include fontSize(18px);font-family: 'Open Sans';}
+p{@include fontSize(16px);font-family: 'Open Sans';}
 
 a {
     @include transition(all 0.3s ease);
@@ -108,9 +110,11 @@ a {
     }
 }
 .spaceing_class{padding:4rem 0;}
+.standard-font{@include fontSize(14px);}
+// .border-color{border-color: #ebebeb !important}
 /***** Button ******/
 .btn {
-    @include fontSize(18px);
+    @include fontSize(16px);
     @include transition(all 0.3s ease);
     &:focus,
     &.focus,
@@ -123,7 +127,7 @@ a {
 .btn-primary{
     color:#ffffff;
     background: $primary;
-    padding: 0.6rem 2.5rem;
+    padding: 0.6rem 2rem;
     &:hover,&:focus,&:active,
     &:focus,&.disabled,
     &:not(:disabled):not(.disabled):active,
@@ -142,7 +146,7 @@ a {
 .btn-secondary{
     color:#ffffff;
     background: $secondary;
-    padding: 0.6rem 2.5rem;
+    padding: 0.6rem 2rem;
     &:hover,&:focus,&:active, &:focus,&:disabled,
     &:not(:disabled):not(.disabled):active,
     &:not(:disabled):not(.disabled).active,
@@ -167,7 +171,7 @@ a {
 .section-spacing{
     padding:40px 0px;
     @include mq("tablet"){
-        padding:100px 0px;
+        padding:70px 0px;
     }
 }
 // section header
@@ -217,7 +221,7 @@ a {
 	.accordion-credit-items {
 		.accordion-header {
 			.accordion-button {
-				font-size: 18px;
+				font-size: 16px;
 			}
 		}
 	}
