@@ -35,10 +35,10 @@ export default function Header({ onLoginClick }) {
       <div className="container">
         <div className="d-flex justify-content-between align-items-center">
           <div className="logo">
-            <img src={SiteImage} alt='Hn9 Codecraft'/>
+         <a href="/"><img src={SiteImage} alt='Hn9 Codecraft'/></a>
           </div>
           <div className='d-flex align-items-center gap-2'>
-            <a href="" className='text-black mx-4 font-outline'>How to Work</a>
+            <a href="/howtowork" className='text-black mx-4 font-outline'>How to Work</a>
             {isLoggedIn ? (
               <div className="d-flex align-items-center">
                   <button

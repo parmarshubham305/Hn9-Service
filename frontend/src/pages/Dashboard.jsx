@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { api } from '../api';
 import DashboardTab from '../components/admin/DashboardTab';
-import UsersTab from '../components/admin/UsersTab';
+import HourlyProject from '../components/admin/HourlyProject';
 import PurchasedServicesTab from '../components/admin/PurchasedServicesTab';
 import ServicesTab from '../components/admin/ServicesTab';
 import TasksTab from '../components/admin/TasksTab';
@@ -142,8 +142,8 @@ export default function Dashboard() {
     switch (activeTab) {
       case 'dashboard':
         return <DashboardTab user={user} />;
-      case 'users':
-        return <UsersTab users={users} setEditingUser={setEditingUser} deleteUser={deleteUser} />;
+      case 'hourlyproject':
+        return <HourlyProject users={users} setEditingUser={setEditingUser} deleteUser={deleteUser} />;
       case 'purchased':
         return <PurchasedServicesTab user={user} />;
       case 'services':
@@ -164,7 +164,7 @@ export default function Dashboard() {
             <div className="nav flex-column nav-pills" role="tablist">
               <button className={`nav-link d-flex align-items-center font-outline rounded-0 py-3 px-4 text-start border ${activeTab === 'dashboard' ? 'active border-primary' : ''}`} onClick={() => setActiveTab('dashboard')}>
                 <img width="23" height="23" src={DeshboardImg} alt="deshboard" className={`me-3 ${activeTab === 'dashboard' ? 'invert-img' : ''}`}/>Dashboard</button>
-              <button className={`nav-link d-flex align-items-center font-outline rounded-0 py-3 px-4 text-start border ${activeTab === 'users' ? 'active border-primary' : ''}`} onClick={() => setActiveTab('users')}> <img width="23" height="23" src={UsersImg} alt="deshboard"  className={`me-3 ${activeTab === 'users' ? 'invert-img' : ''}`}/>All Users</button>
+              <button className={`nav-link d-flex align-items-center font-outline rounded-0 py-3 px-4 text-start border ${activeTab === 'hourlyproject' ? 'active border-primary' : ''}`} onClick={() => setActiveTab('hourlyproject')}> <img width="23" height="23" src={UsersImg} alt="deshboard"  className={`me-3 ${activeTab === 'hourlyproject' ? 'invert-img' : ''}`}/>Hourly Project</button>
               <button className={`nav-link d-flex align-items-center font-outline rounded-0 py-3 px-4 text-start border ${activeTab === 'purchased' ? 'active border-primary' : ''}`} onClick={() => setActiveTab('purchased')}>
                 <img width="23" height="23" src={PlanImg} alt="deshboard"     className={`me-3 ${activeTab === 'purchased' ? 'invert-img' : ''}`} />Purchased Services</button>
               <button className={`nav-link d-flex align-items-center font-outline rounded-0 py-3 px-4 text-start border ${activeTab === 'services' ? 'active border-primary' : ''}`} onClick={() => setActiveTab('services')}>

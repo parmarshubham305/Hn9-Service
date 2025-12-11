@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function UsersTab({ users, setEditingUser, deleteUser }) {
+export default function HourlyProject({ users, setEditingUser, deleteUser }) {
   console.log('UsersTab received users:', users);
   return (
     <div>

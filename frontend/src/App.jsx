@@ -16,6 +16,7 @@ import Cancel from './pages/Cancel';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
+import HowToWork from './pages/HowtoWork';  
 
 function ProtectedRoute({ children }) {
   const isLoggedIn = localStorage.getItem('isLoggedIn');
@@ -96,6 +97,7 @@ export default function App(){
         <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
         <Route path="/success" element={<Success />} />
         <Route path="/cancel" element={<Cancel />} />
+        <Route path="/howtowork" element={<HowToWork />} />
       </Routes>
 
       {showLogin && (
